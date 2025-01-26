@@ -24,7 +24,7 @@ const client = new mongodb_1.MongoClient(MONGO_URI, {
 });
 async function run() {
     try {
-        await client.connect();
+        // await client.connect();
         const database = client.db("pharmacy");
         const medicineCollection = database.collection("medicines");
         // API route to fetch table data

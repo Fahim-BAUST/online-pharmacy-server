@@ -25,7 +25,7 @@ const client = new MongoClient(MONGO_URI, {
 
 async function run() {
   try {
-    await client.connect();
+    // await client.connect();
     const database = client.db("pharmacy");
     const medicineCollection = database.collection("medicines");
 
