@@ -10,40 +10,40 @@ const PORT = 3001;
 app.use(cors());
 
 // MongoDB connection URI from environment variables
-const MONGO_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@medicines.srxzb.mongodb.net/?retryWrites=true&w=majority&appName=medicine`;
+// const MONGO_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@medicines.srxzb.mongodb.net/?retryWrites=true&w=majority&appName=medicine`;
 
-const client = new MongoClient(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// const client = new MongoClient(MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 async function run() {
-  await client.connect();
-  const database = client.db("pharmacy");
-  const medicineCollection = database.collection("medicines");
+  // await client.connect();
+  // const database = client.db("pharmacy");
+  // const medicineCollection = database.collection("medicines");
 
   // API route to fetch table data
-  app.get("/api/table-data", async (req, res) => {
-    try {
-      // const { securityCode } = req.body;
+  // app.get("/api/table-data", async (req, res) => {
+  //   try {
+  //     // const { securityCode } = req.body;
 
-      // Validate security code
-      // if (securityCode !== `${process.env.accessToken}`) {
-      //   return res
-      //     .status(403)
-      //     .json({ error: "Forbidden: Invalid security code" });
-      // }
+  //     // Validate security code
+  //     // if (securityCode !== `${process.env.accessToken}`) {
+  //     //   return res
+  //     //     .status(403)
+  //     //     .json({ error: "Forbidden: Invalid security code" });
+  //     // }
 
-      const tableData = medicineCollection.find({});
-      const result = await tableData.toArray();
+  //     const tableData = medicineCollection.find({});
+  //     const result = await tableData.toArray();
 
-      // Send empty array if no data is found
-      res.status(200).json(result.length > 0 ? result : []);
-    } catch (error) {
-      console.error("Error fetching table data:", error);
-      res.status(500).json({ error: "Internal Server Error" });
-    }
-  });
+  //     // Send empty array if no data is found
+  //     res.status(200).json(result.length > 0 ? result : []);
+  //   } catch (error) {
+  //     console.error("Error fetching table data:", error);
+  //     res.status(500).json({ error: "Internal Server Error" });
+  //   }
+  // });
 
   app.get("/", (req, res) => {
     res.send("Welcome to the API!");
