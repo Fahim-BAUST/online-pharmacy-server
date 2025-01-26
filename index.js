@@ -44,6 +44,10 @@ async function run() {
       res.status(500).json({ error: "Internal Server Error" });
     }
   });
+
+  app.get("/", (req, res) => {
+    res.send("Welcome to the API!");
+  });
 }
 run().catch(console.dir);
 
